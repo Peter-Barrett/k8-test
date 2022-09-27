@@ -1,0 +1,5 @@
+name: 'k8-helm-test'
+
+deployment:
+  image: 'k8-test'
+  tag: 'latest'
