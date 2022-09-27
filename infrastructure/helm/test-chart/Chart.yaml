@@ -28,6 +28,6 @@ dependencies:
   version: "10.24.3"
   repository: https://helm.traefik.io/traefik
 
-- name: redis
-  version: "17.1.8"
-  repository: https://charts.bitnami.com/bitnami
+- name: argo-cd
+  version: 2.11.0
+  repository: https://argoproj.github.io/argo-helm
