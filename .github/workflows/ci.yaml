@@ -61,7 +61,7 @@ jobs:
       - name: Update Image Version
         uses: mikefarah/yq@master
         with:
-          cmd: yq eval '.deployment.image = ${{ needs.build-and-push-image.outputs.image }}' -i infrastructure/helm/test-chart/values.yaml
+          cmd: yq eval '.deployment.image = "${{ needs.build-and-push-image.outputs.image }}"' -i infrastructure/helm/test-chart/values.yaml
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
