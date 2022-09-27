@@ -41,14 +41,14 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: echo
-        run: echo "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.meta.outputs.tags }}"
+        run: echo "${{ steps.meta.outputs.tags }}"
 
-      - name: Repository Dispatch
-        uses: peter-evans/repository-dispatch@v1
+      # update k8s config
+      - name: Update Image Version
+        uses: mikefarah/yq@master
         with:
-          token: ${{ secrets.PAT }}
-          repository: ${{ github.repository }}
-          event-type: new-image
-          client-payload: '{"image": "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.meta.outputs.tags }}"}'
+          cmd: yq eval '.deployment.image = "${{ steps.meta.outputs.tags }}"' -i infrastructure/helm/test-chart/values.yaml
 
-  
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: update deploy image to "${{ steps.meta.outputs.tags }}"
