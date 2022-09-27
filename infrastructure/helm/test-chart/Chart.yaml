@@ -28,6 +28,6 @@ dependencies:
   version: "10.24.3"
   repository: https://helm.traefik.io/traefik
 
-- name: argo-cd
-  version: 2.11.0
-  repository: https://argoproj.github.io/argo-helm
+# - name: argo-cd
+#   version: 2.11.0
+#   repository: https://argoproj.github.io/argo-helm

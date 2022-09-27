@@ -26,7 +26,7 @@ spec:
           # - Each init container must complete successfully before the next one starts.
       containers:
       - name:  {{ .Values.name }}
-        image:  {{ .Values.deployment.image }}:{{ .Values.deployment.tag }}
+        image:  {{ .Values.deployment.image }}
         imagePullPolicy: IfNotPresent
         resources:
           requests:
