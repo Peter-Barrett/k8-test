@@ -56,7 +56,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: ${{ github.head_ref }}
+          ref: main
+          fetch-depth: 0
 
       - name: Update Image Version
         uses: mikefarah/yq@master
